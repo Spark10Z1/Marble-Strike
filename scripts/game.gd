@@ -9,6 +9,8 @@ const MOVE_THRESHOLD := 5.0
 const START_POS := Vector2(590, 580)
 var shooter_available : bool = true
 var marble_count : int
+var cpu_play : bool = false
+var target
 var current_count : int
 
 
@@ -16,6 +18,7 @@ func _ready() -> void:
 	load_images()
 	new_game()
 	$PlayArea.body_exited.connect(marble_obtained)
+	ai_play()
 
 func load_images():
 	for i in range(1, 6, 1):
@@ -42,6 +45,8 @@ func _process(delta: float) -> void:
 		reset_shooter()
 		global.player_score -= 1
 		shooter_available = true
+		cpu_play = not cpu_play
+		ai_play()
 
 
 func generate_marbles():
@@ -77,11 +82,15 @@ func marble_obtained(body):
 		reset_shooter()
 		shooter_available = true
 	else:
-		global.player_score += 1
+		if cpu_play:
+			global.cpu_score += 1
+		else:
+			global.player_score += 1
 		current_count -= 1
-		$"Score Label".text = "Score: " + str(global.player_score)
+		$"Score Label".text = "Player Score: " + str(global.player_score)
+		$"Score Label".text +="\nCPU Score: " + str(global.cpu_score)
 		body.queue_free()
-
+	cpu_play = not cpu_play
 	
 
 func _on_finger_shoot(power) -> void:
@@ -104,3 +113,15 @@ func game_over(outcome):
 	$Hud.show()
 	if outcome == "win":
 		$Hud/ResultPanel/Label.text = "YOU WIN!"
+
+func ai_play():
+	if cpu_play:
+		var select = randi_range(0, current_count)
+		var m = get_tree().get_nodes_in_group("marble_scene")
+		target = m[select]
+		var dir = target.position - START_POS
+		var power = dir * MAX_POWER
+		#print(power)
+		shooter.apply_central_impulse(power)
+		
+	
