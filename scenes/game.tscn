@@ -2,15 +2,18 @@
 
 [ext_resource type="Script" uid="uid://2i4badnm8yjl" path="res://scripts/game.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://cmfb65xpi6l8g" path="res://scenes/marble.tscn" id="2_yqjtg"]
-[ext_resource type="Texture2D" uid="uid://d0v5jq8ykq6se" path="res://assets/marbles/Circle.png" id="3_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://b0gk1cfgfwqln" path="res://assets/marbles/Circle.png" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dhdcoygf0esae" path="res://scenes/finger.tscn" id="4_lbhrr"]
 [ext_resource type="Script" uid="uid://qwf3ftheapkd" path="res://scripts/power_bar.gd" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://cvj8cfl6nxgw" path="res://scenes/hud.tscn" id="6_p57ef"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jlnog"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
+size = Vector2(1157, 266)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_jlnog"]
-radius = 232.03448
+radius = 229.00218
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5sy4"]
 bg_color = Color(0.6, 0.6, 0.6, 0.36862746)
@@ -23,26 +26,46 @@ material = SubResource("CanvasItemMaterial_jlnog")
 script = ExtResource("1_uwrxv")
 marble_scene = ExtResource("2_yqjtg")
 
+[node name="Border" type="Area2D" parent="." unique_id=867786608]
+light_mask = 15
+visibility_layer = 15
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Border" unique_id=1337101095]
+collision_layer = 8
+collision_mask = 12
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/RigidBody2D" unique_id=1189252332]
+position = Vector2(579, -180)
+shape = SubResource("RectangleShape2D_p57ef")
+debug_color = Color(0.70196074, 0.049422763, 0, 0.41960785)
+
 [node name="PlayArea" type="Area2D" parent="." unique_id=1956247392]
 position = Vector2(576, 324)
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayArea" unique_id=604503390]
+position = Vector2(-10.999975, -52.000034)
+scale = Vector2(2.1006289, 2.093023)
+texture = ExtResource("3_lnu2h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayArea" unique_id=2053817662]
+visibility_layer = 7
 position = Vector2(0, -63)
 shape = SubResource("CircleShape2D_jlnog")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayArea" unique_id=604503390]
-position = Vector2(-12.000011, -53.00001)
-scale = Vector2(2.136582, 2.1855984)
-texture = ExtResource("3_lnu2h")
-
 [node name="Finger" parent="." unique_id=692574591 instance=ExtResource("4_lbhrr")]
-position = Vector2(576, 324)
-scale = Vector2(0.8804784, 0.8804784)
+z_index = 2
+position = Vector2(138, 62.000046)
+scale = Vector2(0.23087287, -0.85629904)
+flip_h = true
 
 [node name="PowerBar" type="ProgressBar" parent="." unique_id=1490769010]
-offset_right = 100.0
-offset_bottom = 30.0
+offset_left = 163.0
+offset_top = 23.0
+offset_right = 263.0
+offset_bottom = 53.0
 theme_override_styles/background = SubResource("StyleBoxFlat_u5sy4")
 theme_override_styles/fill = SubResource("StyleBoxFlat_iywne")
 show_percentage = false
@@ -53,11 +76,22 @@ offset_left = 840.0
 offset_top = 10.0
 offset_right = 1122.0
 offset_bottom = 123.0
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 24
 text = "Player Score: 0
-CPU Score: 0"
+CPU Score: 0
+Remaining Marbles: 15"
+horizontal_alignment = 2
+
+[node name="Current_Player Label" type="Label" parent="." unique_id=771493634]
+offset_left = 153.0
+offset_top = 71.0
+offset_right = 246.0
+offset_bottom = 94.0
+text = "CPU PLAYS!!"
 
 [node name="Hud" parent="." unique_id=291320715 instance=ExtResource("6_p57ef")]
 visible = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=462988667]
 
 [connection signal="shoot" from="Finger" to="." method="_on_finger_shoot"]

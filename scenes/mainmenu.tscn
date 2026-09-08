@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://b40lndu5gpwks"]
 
 [ext_resource type="Script" uid="uid://m52fd0kry5rp" path="res://scripts/play_button.gd" id="1_5mbse"]
+[ext_resource type="Script" uid="uid://duqw7thdhr4cc" path="res://scripts/mainmenu.gd" id="1_r3g3c"]
+[ext_resource type="Script" uid="uid://ddiqjrff3gcs4" path="res://scripts/marble_movement.gd" id="3_dfy5j"]
+[ext_resource type="Texture2D" uid="uid://c325l0caj1hal" path="res://assets/marbles/ms_1.png" id="4_dfy5j"]
+[ext_resource type="Texture2D" uid="uid://8lujgxyc56u6" path="res://assets/marbles/ms_2.png" id="5_85riq"]
+[ext_resource type="Texture2D" uid="uid://beb30t8cvr1p6" path="res://assets/marbles/ms_3.png" id="6_wf3n4"]
+[ext_resource type="Texture2D" uid="uid://c8gib74bxuja0" path="res://assets/marbles/ms_4.png" id="7_h73c4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eurlx"]
 bg_color = Color(0, 0.6, 0.017335225, 1)
@@ -14,7 +20,26 @@ bg_color = Color(0.6, 0.09926248, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vue75"]
 bg_color = Color(0.6, 0.37382948, 0.3342787, 1)
 
+[sub_resource type="FontVariation" id="FontVariation_3k8sp"]
+spacing_glyph = 20
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlnog"]
+size = Vector2(461.5844, 40.19201)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3g3c"]
+size = Vector2(345, 117.99999)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s5g8n"]
+size = Vector2(248, 126)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vvtq"]
+size = Vector2(141, 643.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jlnog"]
+radius = 16.526413
+
 [node name="Main Menu" type="Node2D" unique_id=1875284667]
+script = ExtResource("1_r3g3c")
 
 [node name="MenuPanel" type="Panel" parent="." unique_id=1492096448]
 offset_right = 1154.0
@@ -56,6 +81,142 @@ theme_override_font_sizes/font_size = 80
 theme_override_styles/pressed = SubResource("StyleBoxFlat_l6cm7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_vue75")
 text = "QUIT"
+
+[node name="Logo" type="Label" parent="MenuPanel" unique_id=1451692330]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -199.5
+offset_top = 96.0
+offset_right = 199.5
+offset_bottom = 217.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.35262495, 0.010997951, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.69852066, 1, 0)
+theme_override_colors/font_outline_color = Color(0.06843549, 1, 0.8197193, 1)
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_3k8sp")
+theme_override_font_sizes/font_size = 88
+text = "MARBLES"
+uppercase = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MenuPanel" unique_id=1090682679]
+collision_layer = 16
+collision_mask = 2
+
+[node name="Logo_Collsion" type="CollisionShape2D" parent="MenuPanel/StaticBody2D" unique_id=1652080970]
+visibility_layer = 8
+position = Vector2(577.75, 158.5)
+scale = Vector2(1.0984868, 2.2052524)
+shape = SubResource("RectangleShape2D_jlnog")
+
+[node name="PLAY" type="CollisionShape2D" parent="MenuPanel/StaticBody2D" unique_id=424483756]
+visibility_layer = 8
+position = Vector2(579.5, 322)
+scale = Vector2(1.0000001, 1.0000001)
+shape = SubResource("RectangleShape2D_r3g3c")
+
+[node name="QUIT" type="CollisionShape2D" parent="MenuPanel/StaticBody2D" unique_id=1976472463]
+position = Vector2(578, 490)
+shape = SubResource("RectangleShape2D_s5g8n")
+
+[node name="Left" type="CollisionShape2D" parent="MenuPanel/StaticBody2D" unique_id=1531110791]
+position = Vector2(-60.5, 319.5)
+shape = SubResource("RectangleShape2D_3vvtq")
+
+[node name="Right" type="CollisionShape2D" parent="MenuPanel/StaticBody2D" unique_id=169143289]
+position = Vector2(1155, 315)
+shape = SubResource("RectangleShape2D_3vvtq")
+
+[node name="Top" type="CollisionShape2D" parent="MenuPanel/StaticBody2D" unique_id=917306695]
+position = Vector2(559, -110)
+rotation = 1.5707964
+scale = Vector2(1.5253416, 2.118257)
+shape = SubResource("RectangleShape2D_3vvtq")
+
+[node name="Bottom" type="CollisionShape2D" parent="MenuPanel/StaticBody2D" unique_id=1471657518]
+position = Vector2(579, 742.99994)
+rotation = -1.5707963
+scale = Vector2(1.4936534, -2.0178733)
+shape = SubResource("RectangleShape2D_3vvtq")
+
+[node name="Marble1" type="CharacterBody2D" parent="." unique_id=432864283]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(32, 18)
+collision_layer = 2
+collision_mask = 26
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("3_dfy5j")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marble1" unique_id=1366871139]
+scale = Vector2(-0.916, -0.949)
+texture = ExtResource("4_dfy5j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marble1" unique_id=2013207371]
+light_mask = 2
+scale = Vector2(1.0286562, 1)
+shape = SubResource("CircleShape2D_jlnog")
+
+[node name="Marble2" type="CharacterBody2D" parent="." unique_id=834861700]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(1064, 17)
+collision_layer = 2
+collision_mask = 26
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("3_dfy5j")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marble2" unique_id=1080907292]
+scale = Vector2(-0.916, -0.949)
+texture = ExtResource("5_85riq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marble2" unique_id=527380602]
+light_mask = 2
+scale = Vector2(1.0286562, 1)
+shape = SubResource("CircleShape2D_jlnog")
+
+[node name="Marble3" type="CharacterBody2D" parent="." unique_id=992707334]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(33, 613)
+collision_layer = 2
+collision_mask = 26
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("3_dfy5j")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marble3" unique_id=881209844]
+scale = Vector2(-0.916, -0.949)
+texture = ExtResource("6_wf3n4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marble3" unique_id=2111742192]
+light_mask = 2
+scale = Vector2(1.0286562, 1)
+shape = SubResource("CircleShape2D_jlnog")
+
+[node name="Marble4" type="CharacterBody2D" parent="." unique_id=1038053089]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(1062, 613)
+collision_layer = 2
+collision_mask = 26
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("3_dfy5j")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marble4" unique_id=165261660]
+scale = Vector2(-0.916, -0.949)
+texture = ExtResource("7_h73c4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marble4" unique_id=192921657]
+light_mask = 2
+shape = SubResource("CircleShape2D_jlnog")
 
 [connection signal="pressed" from="MenuPanel/PlayButton" to="MenuPanel/PlayButton" method="_on_play_button_pressed"]
 [connection signal="pressed" from="MenuPanel/QuitButton" to="MenuPanel/PlayButton" method="_on_quit_button_pressed"]

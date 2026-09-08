@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c3jp3x2kgfoiu"]
 
 [ext_resource type="Script" uid="uid://y8irq4q53loo" path="res://scripts/difficulty_panel.gd" id="1_rgbgp"]
+[ext_resource type="Script" uid="uid://ddiqjrff3gcs4" path="res://scripts/marble_movement.gd" id="2_oinrr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5e74"]
 bg_color = Color(0, 0.6, 0.015413189, 1)
@@ -25,6 +26,24 @@ bg_color = Color(0, 0.0850648, 0.6, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgbgp"]
 bg_color = Color(0.3253269, 0.366089, 0.6, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h8aph"]
+radius = 16.526413
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oinrr"]
+size = Vector2(225.7651, 44.892815)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_we5c5"]
+size = Vector2(257, 97)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_100ey"]
+size = Vector2(250, 98)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3povj"]
+size = Vector2(255, 101)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyg2l"]
+size = Vector2(141, 643.5)
 
 [node name="Difficulty" type="Node2D" unique_id=1516036642]
 
@@ -101,6 +120,122 @@ theme_override_font_sizes/font_size = 56
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ebcsn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rgbgp")
 text = "BACK"
+
+[node name="Marble1" type="CharacterBody2D" parent="DifficultyPanel" unique_id=317436546]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(32, 18)
+collision_layer = 2
+collision_mask = 26
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("2_oinrr")
+
+[node name="Sprite2D" type="Sprite2D" parent="DifficultyPanel/Marble1" unique_id=1543856892]
+scale = Vector2(-0.916, -0.949)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DifficultyPanel/Marble1" unique_id=1971558875]
+light_mask = 2
+scale = Vector2(1.0286562, 1)
+shape = SubResource("CircleShape2D_h8aph")
+
+[node name="Marble2" type="CharacterBody2D" parent="DifficultyPanel" unique_id=619264103]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(1064, 17)
+collision_layer = 2
+collision_mask = 26
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("2_oinrr")
+
+[node name="Sprite2D" type="Sprite2D" parent="DifficultyPanel/Marble2" unique_id=1492547195]
+scale = Vector2(-0.916, -0.949)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DifficultyPanel/Marble2" unique_id=1195130495]
+light_mask = 2
+scale = Vector2(1.0286562, 1)
+shape = SubResource("CircleShape2D_h8aph")
+
+[node name="Marble3" type="CharacterBody2D" parent="DifficultyPanel" unique_id=820047185]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(33, 613)
+collision_layer = 2
+collision_mask = 26
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("2_oinrr")
+
+[node name="Sprite2D" type="Sprite2D" parent="DifficultyPanel/Marble3" unique_id=1146255700]
+scale = Vector2(-0.916, -0.949)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DifficultyPanel/Marble3" unique_id=832936041]
+light_mask = 2
+scale = Vector2(1.0286562, 1)
+shape = SubResource("CircleShape2D_h8aph")
+
+[node name="Marble4" type="CharacterBody2D" parent="DifficultyPanel" unique_id=236429394]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(1062, 613)
+collision_layer = 2
+collision_mask = 26
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("2_oinrr")
+
+[node name="Sprite2D" type="Sprite2D" parent="DifficultyPanel/Marble4" unique_id=362510918]
+scale = Vector2(-0.916, -0.949)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DifficultyPanel/Marble4" unique_id=1364916871]
+light_mask = 2
+scale = Vector2(1.0286562, 1)
+shape = SubResource("CircleShape2D_h8aph")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2112185940]
+collision_layer = 16
+collision_mask = 2
+
+[node name="Easy" type="CollisionShape2D" parent="StaticBody2D" unique_id=1235578603]
+visibility_layer = 8
+position = Vector2(190, 322.5)
+scale = Vector2(1.0984868, 2.2052524)
+shape = SubResource("RectangleShape2D_oinrr")
+
+[node name="Medium" type="CollisionShape2D" parent="StaticBody2D" unique_id=78567418]
+visibility_layer = 8
+position = Vector2(574.5, 322.5)
+scale = Vector2(1.0000001, 1.0000001)
+shape = SubResource("RectangleShape2D_we5c5")
+
+[node name="Hard" type="CollisionShape2D" parent="StaticBody2D" unique_id=248486811]
+position = Vector2(952, 322)
+shape = SubResource("RectangleShape2D_100ey")
+
+[node name="Back" type="CollisionShape2D" parent="StaticBody2D" unique_id=1802405954]
+position = Vector2(575, 539)
+shape = SubResource("RectangleShape2D_3povj")
+
+[node name="Left" type="CollisionShape2D" parent="StaticBody2D" unique_id=324935739]
+position = Vector2(-71, 322)
+shape = SubResource("RectangleShape2D_hyg2l")
+
+[node name="Right" type="CollisionShape2D" parent="StaticBody2D" unique_id=1017737131]
+position = Vector2(1221, 325)
+shape = SubResource("RectangleShape2D_hyg2l")
+
+[node name="Top" type="CollisionShape2D" parent="StaticBody2D" unique_id=89649556]
+position = Vector2(559, -110)
+rotation = 1.5707964
+scale = Vector2(1.5253416, 2.118257)
+shape = SubResource("RectangleShape2D_hyg2l")
+
+[node name="Bottom" type="CollisionShape2D" parent="StaticBody2D" unique_id=271941973]
+position = Vector2(569, 751)
+rotation = -1.5707963
+scale = Vector2(1.4936534, -2.0178733)
+shape = SubResource("RectangleShape2D_hyg2l")
 
 [connection signal="pressed" from="DifficultyPanel/EasyButton" to="DifficultyPanel" method="_on_easy_button_pressed"]
 [connection signal="pressed" from="DifficultyPanel/MediumButton" to="DifficultyPanel" method="_on_medium_button_pressed"]

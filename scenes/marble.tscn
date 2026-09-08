@@ -4,8 +4,11 @@
 radius = 11.045361
 
 [node name="marble" type="RigidBody2D" unique_id=1702974350 groups=["marble_scene"]]
+collision_layer = 2
+collision_mask = 7
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=391387735]
+texture_filter = 1
 scale = Vector2(-0.6251833, -0.6251833)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1289295292]

@@ -21,6 +21,6 @@ func _process(_delta):
 		power_dir = 1
 		if power > 0:
 			var dir = mouse_pos - position
-			print(position)
+			#print(position)
 			shoot.emit(power * dir)
 			power = 0

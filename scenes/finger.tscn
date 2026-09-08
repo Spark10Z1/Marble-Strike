@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dhdcoygf0esae"]
 
+[ext_resource type="Texture2D" uid="uid://bslkgbt27pkku" path="res://assets/marbles/aim.png" id="1_4cckd"]
 [ext_resource type="Script" uid="uid://bhrlmd8jgh0gr" path="res://scripts/finger.gd" id="2_4cckd"]
 
 [node name="Finger" type="Sprite2D" unique_id=692574591]
+texture = ExtResource("1_4cckd")
 script = ExtResource("2_4cckd")
