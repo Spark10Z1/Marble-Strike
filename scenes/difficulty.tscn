@@ -2,6 +2,11 @@
 
 [ext_resource type="Script" uid="uid://y8irq4q53loo" path="res://scripts/difficulty_panel.gd" id="1_rgbgp"]
 [ext_resource type="Script" uid="uid://ddiqjrff3gcs4" path="res://scripts/marble_movement.gd" id="2_oinrr"]
+[ext_resource type="FontFile" uid="uid://dbdu1lcgtf6kk" path="res://assets/fonts/BoldPixels.otf" id="2_q0d2u"]
+[ext_resource type="Texture2D" uid="uid://c6nwcw0reefjb" path="res://assets/BG.jpeg" id="4_q5e74"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3povj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5e74"]
 bg_color = Color(0, 0.6, 0.015413189, 1)
@@ -9,17 +14,44 @@ bg_color = Color(0, 0.6, 0.015413189, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0d2u"]
 bg_color = Color(0.39337042, 0.6, 0.3243814, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_100ey"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwrfu"]
 bg_color = Color(1, 0.99324113, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oinrr"]
 bg_color = Color(1, 0.7477759, 0.39837462, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8aph"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_we5c5"]
 bg_color = Color(0.6, 0.13570434, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hyg2l"]
 bg_color = Color(0.6, 0.33466342, 0.3059656, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlnog"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6uurl"]
+bg_color = Color(0.6, 0, 0.4796485, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3k8sp"]
+bg_color = Color(0.6, 0.3050821, 0.5085339, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ei0xv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ae4la"]
+bg_color = Color(1, 0.36078432, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vi71m"]
+bg_color = Color(0.6, 0.40898868, 0.16213232, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xu2wo"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebcsn"]
 bg_color = Color(0, 0.0850648, 0.6, 1)
@@ -30,20 +62,29 @@ bg_color = Color(0.3253269, 0.366089, 0.6, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_h8aph"]
 radius = 16.526413
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5e74"]
+size = Vector2(610, 40)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oinrr"]
-size = Vector2(225.7651, 44.892815)
+size = Vector2(159.31007, 18.138517)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_we5c5"]
-size = Vector2(257, 97)
+size = Vector2(265, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_100ey"]
-size = Vector2(250, 98)
+size = Vector2(175, 40)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3povj"]
-size = Vector2(255, 101)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0d2u"]
+size = Vector2(549, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hyg2l"]
 size = Vector2(141, 643.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3povj"]
+size = Vector2(197, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwrfu"]
+size = Vector2(249, 23)
 
 [node name="Difficulty" type="Node2D" unique_id=1516036642]
 
@@ -52,17 +93,36 @@ offset_right = 1150.0
 offset_bottom = 646.0
 script = ExtResource("1_rgbgp")
 
+[node name="Label" type="Label" parent="DifficultyPanel" unique_id=1550914405]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -307.5
+offset_top = 96.0
+offset_right = 307.5
+offset_bottom = 166.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.20881343, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.039215688, 1, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0.9372549, 0, 1)
+theme_override_fonts/font = ExtResource("2_q0d2u")
+theme_override_font_sizes/font_size = 80
+text = "BOT DIFFICULTY"
+
 [node name="EasyButton" type="Button" parent="DifficultyPanel" unique_id=76533718]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 64.0
-offset_top = -50.0
-offset_right = 314.0
-offset_bottom = 50.0
+offset_left = 62.0
+offset_top = -145.0
+offset_right = 312.0
+offset_bottom = -45.0
 grow_vertical = 2
-theme_override_font_sizes/font_size = 56
+theme_override_fonts/font = ExtResource("2_q0d2u")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_3povj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_q5e74")
 theme_override_styles/hover = SubResource("StyleBoxFlat_q0d2u")
 text = "EASY "
@@ -74,13 +134,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -129.5
-offset_top = -50.0
-offset_right = 129.5
-offset_bottom = 50.0
+offset_left = -137.0
+offset_top = -145.0
+offset_right = 133.0
+offset_bottom = -45.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 56
+theme_override_fonts/font = ExtResource("2_q0d2u")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_100ey")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_cwrfu")
 theme_override_styles/hover = SubResource("StyleBoxFlat_oinrr")
 text = "MEDIUM"
@@ -92,16 +154,51 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -322.0
-offset_top = -50.0
-offset_right = -72.0
-offset_bottom = 50.0
+offset_left = -324.0
+offset_top = -145.0
+offset_right = -74.0
+offset_bottom = -45.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_font_sizes/font_size = 56
+theme_override_fonts/font = ExtResource("2_q0d2u")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_h8aph")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_we5c5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hyg2l")
 text = "HARD"
+
+[node name="2PlayerButton" type="Button" parent="DifficultyPanel" unique_id=1694453803]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -281.5
+offset_top = 25.0
+offset_right = 281.5
+offset_bottom = 103.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_q0d2u")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_jlnog")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6uurl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3k8sp")
+text = "2 PLAYER MODE"
+
+[node name="HowToPlayButton" type="Button" parent="DifficultyPanel" unique_id=854762792]
+layout_mode = 0
+offset_left = 888.0
+offset_top = 13.0
+offset_right = 1139.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("2_q0d2u")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_ei0xv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ae4la")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vi71m")
+text = "HOW TO PLAY?"
 
 [node name="BackButton" type="Button" parent="DifficultyPanel" unique_id=1576714402]
 layout_mode = 1
@@ -116,7 +213,9 @@ offset_right = 125.0
 offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 56
+theme_override_fonts/font = ExtResource("2_q0d2u")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_xu2wo")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ebcsn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rgbgp")
 text = "BACK"
@@ -124,7 +223,7 @@ text = "BACK"
 [node name="Marble1" type="CharacterBody2D" parent="DifficultyPanel" unique_id=317436546]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(32, 18)
+position = Vector2(21, 18)
 collision_layer = 2
 collision_mask = 26
 motion_mode = 1
@@ -142,7 +241,7 @@ shape = SubResource("CircleShape2D_h8aph")
 [node name="Marble2" type="CharacterBody2D" parent="DifficultyPanel" unique_id=619264103]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(1064, 17)
+position = Vector2(1130, 114)
 collision_layer = 2
 collision_mask = 26
 motion_mode = 1
@@ -160,7 +259,7 @@ shape = SubResource("CircleShape2D_h8aph")
 [node name="Marble3" type="CharacterBody2D" parent="DifficultyPanel" unique_id=820047185]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(33, 613)
+position = Vector2(21, 622)
 collision_layer = 2
 collision_mask = 26
 motion_mode = 1
@@ -178,7 +277,7 @@ shape = SubResource("CircleShape2D_h8aph")
 [node name="Marble4" type="CharacterBody2D" parent="DifficultyPanel" unique_id=236429394]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(1062, 613)
+position = Vector2(1128, 626)
 collision_layer = 2
 collision_mask = 26
 motion_mode = 1
@@ -193,29 +292,43 @@ light_mask = 2
 scale = Vector2(1.0286562, 1)
 shape = SubResource("CircleShape2D_h8aph")
 
+[node name="Debug" type="Label" parent="DifficultyPanel" unique_id=1458762368]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 27.0
+offset_right = 780.0
+offset_bottom = 63.0
+theme_override_fonts/font = ExtResource("2_q0d2u")
+theme_override_font_sizes/font_size = 40
+text = "NOT IMPLEMENTED YET!!!"
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2112185940]
 collision_layer = 16
 collision_mask = 2
 
+[node name="BotDifficulty" type="CollisionShape2D" parent="StaticBody2D" unique_id=2029898896]
+position = Vector2(573, 131)
+shape = SubResource("RectangleShape2D_q5e74")
+
 [node name="Easy" type="CollisionShape2D" parent="StaticBody2D" unique_id=1235578603]
 visibility_layer = 8
-position = Vector2(190, 322.5)
+position = Vector2(169, 228)
 scale = Vector2(1.0984868, 2.2052524)
 shape = SubResource("RectangleShape2D_oinrr")
 
 [node name="Medium" type="CollisionShape2D" parent="StaticBody2D" unique_id=78567418]
 visibility_layer = 8
-position = Vector2(574.5, 322.5)
+position = Vector2(570.5, 228)
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_we5c5")
 
 [node name="Hard" type="CollisionShape2D" parent="StaticBody2D" unique_id=248486811]
-position = Vector2(952, 322)
+position = Vector2(948.5, 228)
 shape = SubResource("RectangleShape2D_100ey")
 
-[node name="Back" type="CollisionShape2D" parent="StaticBody2D" unique_id=1802405954]
-position = Vector2(575, 539)
-shape = SubResource("RectangleShape2D_3povj")
+[node name="2PlayerMod" type="CollisionShape2D" parent="StaticBody2D" unique_id=1327823642]
+position = Vector2(572.5, 387)
+shape = SubResource("RectangleShape2D_q0d2u")
 
 [node name="Left" type="CollisionShape2D" parent="StaticBody2D" unique_id=324935739]
 position = Vector2(-71, 322)
@@ -237,7 +350,24 @@ rotation = -1.5707963
 scale = Vector2(1.4936534, -2.0178733)
 shape = SubResource("RectangleShape2D_hyg2l")
 
+[node name="Back" type="CollisionShape2D" parent="StaticBody2D" unique_id=1802405954]
+position = Vector2(571.5, 540)
+shape = SubResource("RectangleShape2D_3povj")
+
+[node name="HowToPlay" type="CollisionShape2D" parent="StaticBody2D" unique_id=1843951119]
+position = Vector2(1012.5, 31.5)
+shape = SubResource("RectangleShape2D_cwrfu")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1349858629]
+z_index = -1
+position = Vector2(576.5001, 322.5)
+scale = Vector2(1.2179487, 0.42799732)
+texture = ExtResource("4_q5e74")
+metadata/_edit_lock_ = true
+
 [connection signal="pressed" from="DifficultyPanel/EasyButton" to="DifficultyPanel" method="_on_easy_button_pressed"]
 [connection signal="pressed" from="DifficultyPanel/MediumButton" to="DifficultyPanel" method="_on_medium_button_pressed"]
 [connection signal="pressed" from="DifficultyPanel/HardButton" to="DifficultyPanel" method="_on_hard_button_pressed"]
+[connection signal="pressed" from="DifficultyPanel/2PlayerButton" to="DifficultyPanel" method="_on_player_button_pressed"]
+[connection signal="pressed" from="DifficultyPanel/HowToPlayButton" to="DifficultyPanel" method="_on_how_to_play_button_pressed"]
 [connection signal="pressed" from="DifficultyPanel/BackButton" to="DifficultyPanel" method="_on_back_button_pressed"]

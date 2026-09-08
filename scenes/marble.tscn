@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cmfb65xpi6l8g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6uurl"]
-radius = 11.045361
+radius = 11.0
 
 [node name="marble" type="RigidBody2D" unique_id=1702974350 groups=["marble_scene"]]
 collision_layer = 2

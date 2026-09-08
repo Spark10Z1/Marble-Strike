@@ -8,7 +8,9 @@ var shooter
 const MAX_POWER := 4.5
 var taking_shot : bool
 const MOVE_THRESHOLD := 5.0
-const START_POS := Vector2(590, 580)
+const START_POS := Vector2(580, 615)
+const AREA_POS := Vector2(576, 346)
+
 var shooter_available : bool = true
 
 var marble_count : int
@@ -33,8 +35,9 @@ func _ready() -> void:
 	$PlayArea.body_exited.connect(marble_obtained)
 
 func load_images():
-	for i in range(1, 30, 1):
-		var filename = str("res://assets/marbles/ms_",i,".png")
+	for i in range(1, 18, 1):
+		#var filename = str("res://assets/marbles/ms_",i,".png")
+		var filename = str("res://assets/balls/",i,".png")
 		var marble_image = load(filename)
 		marble_images.append(marble_image)
 
@@ -71,7 +74,7 @@ func generate_marbles():
 	current_count = marble_count
 	for count in range(marble_count):
 		var marble_instance = marble_scene.instantiate()
-		var default_pos = Vector2(576, 261)
+		var default_pos = AREA_POS
 		var x_pos_change = randi_range(-160, 160)
 		var y_pos_change = randi_range(-160, 160)
 		var pos = default_pos + Vector2(x_pos_change, y_pos_change)
@@ -88,7 +91,8 @@ func reset_shooter():
 	shooter = marble_scene.instantiate()
 	add_child(shooter)
 	shooter.position = START_POS
-	shooter.get_node("Sprite2D").texture = load("res://assets/balls/ball_16.png")
+	#shooter.get_node("Sprite2D").texture = load("res://assets/balls/ball_16.png")
+	shooter.get_node("Sprite2D").texture = load("res://assets/marbles/ms_1.png")
 	shooter.set_collision_layer_value(3, true)
 	shooter.set_collision_layer_value(2, false)
 	shooter.set_collision_mask_value(4, true)
@@ -117,8 +121,8 @@ func marble_obtained(body):
 
 func show_finger():
 	$Finger.set_process(true)
-	$PowerBar.position.x = shooter.position.x - (0.5 * $PowerBar.size.x)
-	$PowerBar.position.y = shooter.position.y + ($PowerBar.size.y)
+	#$PowerBar.position.x = shooter.position.x - (0.5 * $PowerBar.size.x)
+	#$PowerBar.position.y = shooter.position.y + ($PowerBar.size.y)
 	$Finger.position = shooter.position
 	$Finger.show()
 	$PowerBar.show()

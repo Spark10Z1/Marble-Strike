@@ -12,7 +12,7 @@ func _process(_delta):
 	look_at(mouse_pos)
 	#check for mouse clicks
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		power += 0.05 * power_dir
+		power += 0.025 * power_dir
 		if power >= get_parent().MAX_POWER:
 			power_dir = -1
 		elif power <= 0:

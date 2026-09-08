@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dhdcoygf0esae" path="res://scenes/finger.tscn" id="4_lbhrr"]
 [ext_resource type="Script" uid="uid://qwf3ftheapkd" path="res://scripts/power_bar.gd" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://cvj8cfl6nxgw" path="res://scenes/hud.tscn" id="6_p57ef"]
+[ext_resource type="Texture2D" uid="uid://c6nwcw0reefjb" path="res://assets/BG.jpeg" id="6_u5sy4"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jlnog"]
 
@@ -15,11 +16,17 @@ size = Vector2(1157, 266)
 [sub_resource type="CircleShape2D" id="CircleShape2D_jlnog"]
 radius = 229.00218
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5sy4"]
-bg_color = Color(0.6, 0.6, 0.6, 0.36862746)
+[sub_resource type="Gradient" id="Gradient_p57ef"]
+offsets = PackedFloat32Array(0, 0.51, 1)
+colors = PackedColorArray(0.32065892, 1, 0, 1, 1, 0.58320034, 0, 1, 1, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
-bg_color = Color(0.017387582, 0.6, 0, 1)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u5sy4"]
+gradient = SubResource("Gradient_p57ef")
+metadata/_snap_enabled = true
+metadata/_snap_count = 100
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p57ef"]
+texture = SubResource("GradientTexture2D_u5sy4")
 
 [node name="Game" type="Node2D" unique_id=1443408706]
 material = SubResource("CanvasItemMaterial_jlnog")
@@ -41,7 +48,7 @@ shape = SubResource("RectangleShape2D_p57ef")
 debug_color = Color(0.70196074, 0.049422763, 0, 0.41960785)
 
 [node name="PlayArea" type="Area2D" parent="." unique_id=1956247392]
-position = Vector2(576, 324)
+position = Vector2(577, 409)
 collision_mask = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayArea" unique_id=604503390]
@@ -62,14 +69,16 @@ scale = Vector2(0.23087287, -0.85629904)
 flip_h = true
 
 [node name="PowerBar" type="ProgressBar" parent="." unique_id=1490769010]
-offset_left = 163.0
-offset_top = 23.0
-offset_right = 263.0
-offset_bottom = 53.0
-theme_override_styles/background = SubResource("StyleBoxFlat_u5sy4")
-theme_override_styles/fill = SubResource("StyleBoxFlat_iywne")
+offset_left = 250.0
+offset_top = 494.0
+offset_right = 524.5455
+offset_bottom = 524.0
+rotation = -1.5707964
+theme_override_styles/fill = SubResource("StyleBoxTexture_p57ef")
 show_percentage = false
 script = ExtResource("5_iywne")
+
+[node name="Sprite2D" type="Sprite2D" parent="PowerBar" unique_id=648957027]
 
 [node name="Score Label" type="Label" parent="." unique_id=353708655]
 offset_left = 840.0
@@ -93,5 +102,11 @@ text = "CPU PLAYS!!"
 visible = false
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=462988667]
+
+[node name="Bg" type="Sprite2D" parent="." unique_id=644831230]
+z_index = -2
+position = Vector2(556, 233.00003)
+rotation = -1.5707964
+texture = ExtResource("6_u5sy4")
 
 [connection signal="shoot" from="Finger" to="." method="_on_finger_shoot"]

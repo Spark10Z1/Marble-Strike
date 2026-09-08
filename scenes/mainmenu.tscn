@@ -2,17 +2,38 @@
 
 [ext_resource type="Script" uid="uid://m52fd0kry5rp" path="res://scripts/play_button.gd" id="1_5mbse"]
 [ext_resource type="Script" uid="uid://duqw7thdhr4cc" path="res://scripts/mainmenu.gd" id="1_r3g3c"]
+[ext_resource type="Texture2D" uid="uid://c6nwcw0reefjb" path="res://assets/BG.jpeg" id="2_h73c4"]
+[ext_resource type="FontFile" uid="uid://dqy86j6edqtnj" path="res://assets/fonts/boldpixels.ttf" id="2_wf3n4"]
 [ext_resource type="Script" uid="uid://ddiqjrff3gcs4" path="res://scripts/marble_movement.gd" id="3_dfy5j"]
 [ext_resource type="Texture2D" uid="uid://c325l0caj1hal" path="res://assets/marbles/ms_1.png" id="4_dfy5j"]
+[ext_resource type="FontFile" uid="uid://dbdu1lcgtf6kk" path="res://assets/fonts/BoldPixels.otf" id="4_h73c4"]
 [ext_resource type="Texture2D" uid="uid://8lujgxyc56u6" path="res://assets/marbles/ms_2.png" id="5_85riq"]
 [ext_resource type="Texture2D" uid="uid://beb30t8cvr1p6" path="res://assets/marbles/ms_3.png" id="6_wf3n4"]
 [ext_resource type="Texture2D" uid="uid://c8gib74bxuja0" path="res://assets/marbles/ms_4.png" id="7_h73c4"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oinrr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uui5l"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eurlx"]
-bg_color = Color(0, 0.6, 0.017335225, 1)
+bg_color = Color(0.21016884, 1, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3k8sp"]
-bg_color = Color(0.51513743, 0.6, 0.4808232, 1)
+bg_color = Color(0.51920277, 0.7529412, 0.46867317, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hago"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlnog"]
+bg_color = Color(1, 0.36862746, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6uurl"]
+bg_color = Color(1, 0.5366614, 0.2548071, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gjjcl"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6cm7"]
 bg_color = Color(0.6, 0.09926248, 0, 1)
@@ -20,17 +41,17 @@ bg_color = Color(0.6, 0.09926248, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vue75"]
 bg_color = Color(0.6, 0.37382948, 0.3342787, 1)
 
-[sub_resource type="FontVariation" id="FontVariation_3k8sp"]
-spacing_glyph = 20
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jlnog"]
-size = Vector2(461.5844, 40.19201)
+size = Vector2(567.6192, 41.718586)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3g3c"]
-size = Vector2(345, 117.99999)
+size = Vector2(397.9999, 79.99997)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wf3n4"]
+size = Vector2(411, 76)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s5g8n"]
-size = Vector2(248, 126)
+size = Vector2(187, 76)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vvtq"]
 size = Vector2(141, 643.5)
@@ -42,55 +63,41 @@ radius = 16.526413
 script = ExtResource("1_r3g3c")
 
 [node name="MenuPanel" type="Panel" parent="." unique_id=1492096448]
-offset_right = 1154.0
-offset_bottom = 644.0
+offset_left = -32.0
+offset_top = -15.0
+offset_right = 1172.0
+offset_bottom = 657.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_oinrr")
 
-[node name="PlayButton" type="Button" parent="MenuPanel" unique_id=733596169]
-layout_mode = 1
-anchors_preset = 7
+[node name="Logo" type="Label" parent="." unique_id=1451692330]
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -172.0
-offset_top = -343.0
-offset_right = 172.0
-offset_bottom = -263.0
+offset_left = 260.0
+offset_top = 108.0
+offset_right = 887.0
+offset_bottom = 186.0
 grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 80
-theme_override_styles/pressed = SubResource("StyleBoxFlat_eurlx")
-theme_override_styles/hover = SubResource("StyleBoxFlat_3k8sp")
-text = "PLAY"
-script = ExtResource("1_5mbse")
+theme_override_colors/font_color = Color(1, 0.5921569, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.69852066, 1, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("4_h73c4")
+theme_override_font_sizes/font_size = 88
+text = "MARBLE STRIKE"
+uppercase = true
 
-[node name="QuitButton" type="Button" parent="MenuPanel" unique_id=1965480451]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -125.5
-offset_top = -214.0
-offset_right = 125.5
-offset_bottom = -96.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 80
-theme_override_styles/pressed = SubResource("StyleBoxFlat_l6cm7")
-theme_override_styles/hover = SubResource("StyleBoxFlat_vue75")
-text = "QUIT"
-
-[node name="Logo" type="Label" parent="MenuPanel" unique_id=1451692330]
+[node name="Slogan?" type="Label" parent="Logo" unique_id=1415417542]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -199.5
-offset_top = 96.0
-offset_right = 199.5
-offset_bottom = 217.0
+offset_left = -208.5
+offset_top = 72.0
+offset_right = 215.5
+offset_bottom = 150.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.35262495, 0.010997951, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.69852066, 1, 0)
@@ -98,46 +105,101 @@ theme_override_colors/font_outline_color = Color(0.06843549, 1, 0.8197193, 1)
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
 theme_override_constants/shadow_outline_size = 5
-theme_override_fonts/font = SubResource("FontVariation_3k8sp")
-theme_override_font_sizes/font_size = 88
-text = "MARBLES"
-uppercase = true
+theme_override_fonts/font = ExtResource("4_h73c4")
+theme_override_font_sizes/font_size = 50
+text = "Aim . Strike . Score"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="MenuPanel" unique_id=1090682679]
+[node name="PlayButton" type="Button" parent="." unique_id=733596169]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 379.5
+offset_top = 311.0
+offset_right = 777.5
+offset_bottom = 391.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_wf3n4")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_uui5l")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eurlx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3k8sp")
+text = "PLAY GAME"
+script = ExtResource("1_5mbse")
+
+[node name="Button" type="Button" parent="." unique_id=764809297]
+offset_left = 369.0
+offset_top = 413.0
+offset_right = 782.0
+offset_bottom = 491.0
+theme_override_fonts/font = ExtResource("4_h73c4")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_4hago")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jlnog")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6uurl")
+text = "CUSTOMIZE"
+
+[node name="QuitButton" type="Button" parent="." unique_id=1965480451]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 493.5
+offset_top = 505.0
+offset_right = 681.5
+offset_bottom = 583.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_wf3n4")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_gjjcl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l6cm7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vue75")
+text = "QUIT"
+
+[node name="Collision_Areas" type="StaticBody2D" parent="." unique_id=1090682679]
+position = Vector2(-11, 0)
 collision_layer = 16
 collision_mask = 2
 
-[node name="Logo_Collsion" type="CollisionShape2D" parent="MenuPanel/StaticBody2D" unique_id=1652080970]
+[node name="Logo" type="CollisionShape2D" parent="Collision_Areas" unique_id=1652080970]
 visibility_layer = 8
-position = Vector2(577.75, 158.5)
+position = Vector2(580.2388, 170)
 scale = Vector2(1.0984868, 2.2052524)
 shape = SubResource("RectangleShape2D_jlnog")
 
-[node name="PLAY" type="CollisionShape2D" parent="MenuPanel/StaticBody2D" unique_id=424483756]
+[node name="PLAY" type="CollisionShape2D" parent="Collision_Areas" unique_id=424483756]
 visibility_layer = 8
-position = Vector2(579.5, 322)
+position = Vector2(582, 351)
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_r3g3c")
 
-[node name="QUIT" type="CollisionShape2D" parent="MenuPanel/StaticBody2D" unique_id=1976472463]
-position = Vector2(578, 490)
+[node name="Customize" type="CollisionShape2D" parent="Collision_Areas" unique_id=1050362241]
+position = Vector2(586.5, 452)
+shape = SubResource("RectangleShape2D_wf3n4")
+
+[node name="QUIT" type="CollisionShape2D" parent="Collision_Areas" unique_id=1976472463]
+position = Vector2(590.5, 544)
 shape = SubResource("RectangleShape2D_s5g8n")
 
-[node name="Left" type="CollisionShape2D" parent="MenuPanel/StaticBody2D" unique_id=1531110791]
-position = Vector2(-60.5, 319.5)
+[node name="Left" type="CollisionShape2D" parent="Collision_Areas" unique_id=1531110791]
+position = Vector2(-68.5, 319.5)
 shape = SubResource("RectangleShape2D_3vvtq")
 
-[node name="Right" type="CollisionShape2D" parent="MenuPanel/StaticBody2D" unique_id=169143289]
-position = Vector2(1155, 315)
+[node name="Right" type="CollisionShape2D" parent="Collision_Areas" unique_id=169143289]
+position = Vector2(1228, 315)
 shape = SubResource("RectangleShape2D_3vvtq")
 
-[node name="Top" type="CollisionShape2D" parent="MenuPanel/StaticBody2D" unique_id=917306695]
+[node name="Top" type="CollisionShape2D" parent="Collision_Areas" unique_id=917306695]
 position = Vector2(559, -110)
 rotation = 1.5707964
 scale = Vector2(1.5253416, 2.118257)
 shape = SubResource("RectangleShape2D_3vvtq")
 
-[node name="Bottom" type="CollisionShape2D" parent="MenuPanel/StaticBody2D" unique_id=1471657518]
+[node name="Bottom" type="CollisionShape2D" parent="Collision_Areas" unique_id=1471657518]
 position = Vector2(579, 742.99994)
 rotation = -1.5707963
 scale = Vector2(1.4936534, -2.0178733)
@@ -146,7 +208,7 @@ shape = SubResource("RectangleShape2D_3vvtq")
 [node name="Marble1" type="CharacterBody2D" parent="." unique_id=432864283]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(32, 18)
+position = Vector2(21, 17)
 collision_layer = 2
 collision_mask = 26
 motion_mode = 1
@@ -165,7 +227,7 @@ shape = SubResource("CircleShape2D_jlnog")
 [node name="Marble2" type="CharacterBody2D" parent="." unique_id=834861700]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(1064, 17)
+position = Vector2(1133, 16)
 collision_layer = 2
 collision_mask = 26
 motion_mode = 1
@@ -184,7 +246,7 @@ shape = SubResource("CircleShape2D_jlnog")
 [node name="Marble3" type="CharacterBody2D" parent="." unique_id=992707334]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(33, 613)
+position = Vector2(22, 620)
 collision_layer = 2
 collision_mask = 26
 motion_mode = 1
@@ -203,7 +265,7 @@ shape = SubResource("CircleShape2D_jlnog")
 [node name="Marble4" type="CharacterBody2D" parent="." unique_id=1038053089]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(1062, 613)
+position = Vector2(1132, 619)
 collision_layer = 2
 collision_mask = 26
 motion_mode = 1
@@ -218,5 +280,12 @@ texture = ExtResource("7_h73c4")
 light_mask = 2
 shape = SubResource("CircleShape2D_jlnog")
 
-[connection signal="pressed" from="MenuPanel/PlayButton" to="MenuPanel/PlayButton" method="_on_play_button_pressed"]
-[connection signal="pressed" from="MenuPanel/QuitButton" to="MenuPanel/PlayButton" method="_on_quit_button_pressed"]
+[node name="Background" type="Sprite2D" parent="." unique_id=1021601750]
+z_index = -1
+position = Vector2(575, 324)
+scale = Vector2(0.99658114, 0.43402544)
+texture = ExtResource("2_h73c4")
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_play_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="PlayButton" method="_on_quit_button_pressed"]
