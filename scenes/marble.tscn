@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cmfb65xpi6l8g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6uurl"]
+radius = 11.045361
+
+[node name="marble" type="RigidBody2D" unique_id=1702974350 groups=["marble_scene"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=391387735]
+scale = Vector2(-0.6251833, -0.6251833)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1289295292]
+shape = SubResource("CircleShape2D_6uurl")

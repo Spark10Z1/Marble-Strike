@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://c3jp3x2kgfoiu"]
+
+[ext_resource type="Script" uid="uid://y8irq4q53loo" path="res://scripts/difficulty_panel.gd" id="1_rgbgp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5e74"]
+bg_color = Color(0, 0.6, 0.015413189, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0d2u"]
+bg_color = Color(0.39337042, 0.6, 0.3243814, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwrfu"]
+bg_color = Color(1, 0.99324113, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oinrr"]
+bg_color = Color(1, 0.7477759, 0.39837462, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_we5c5"]
+bg_color = Color(0.6, 0.13570434, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hyg2l"]
+bg_color = Color(0.6, 0.33466342, 0.3059656, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebcsn"]
+bg_color = Color(0, 0.0850648, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgbgp"]
+bg_color = Color(0.3253269, 0.366089, 0.6, 1)
+
+[node name="Difficulty" type="Node2D" unique_id=1516036642]
+
+[node name="DifficultyPanel" type="Panel" parent="." unique_id=1307572504]
+offset_right = 1150.0
+offset_bottom = 646.0
+script = ExtResource("1_rgbgp")
+
+[node name="EasyButton" type="Button" parent="DifficultyPanel" unique_id=76533718]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = -50.0
+offset_right = 314.0
+offset_bottom = 50.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 56
+theme_override_styles/pressed = SubResource("StyleBoxFlat_q5e74")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q0d2u")
+text = "EASY "
+
+[node name="MediumButton" type="Button" parent="DifficultyPanel" unique_id=1154663683]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.5
+offset_top = -50.0
+offset_right = 129.5
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 56
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cwrfu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oinrr")
+text = "MEDIUM"
+
+[node name="HardButton" type="Button" parent="DifficultyPanel" unique_id=1149374780]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -322.0
+offset_top = -50.0
+offset_right = -72.0
+offset_bottom = 50.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 56
+theme_override_styles/pressed = SubResource("StyleBoxFlat_we5c5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hyg2l")
+text = "HARD"
+
+[node name="BackButton" type="Button" parent="DifficultyPanel" unique_id=1576714402]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -156.0
+offset_right = 125.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 56
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ebcsn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rgbgp")
+text = "BACK"
+
+[connection signal="pressed" from="DifficultyPanel/EasyButton" to="DifficultyPanel" method="_on_easy_button_pressed"]
+[connection signal="pressed" from="DifficultyPanel/MediumButton" to="DifficultyPanel" method="_on_medium_button_pressed"]
+[connection signal="pressed" from="DifficultyPanel/HardButton" to="DifficultyPanel" method="_on_hard_button_pressed"]
+[connection signal="pressed" from="DifficultyPanel/BackButton" to="DifficultyPanel" method="_on_back_button_pressed"]

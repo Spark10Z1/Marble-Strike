@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://b40lndu5gpwks"]
+
+[ext_resource type="Script" uid="uid://m52fd0kry5rp" path="res://scripts/play_button.gd" id="1_5mbse"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eurlx"]
+bg_color = Color(0, 0.6, 0.017335225, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3k8sp"]
+bg_color = Color(0.51513743, 0.6, 0.4808232, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6cm7"]
+bg_color = Color(0.6, 0.09926248, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vue75"]
+bg_color = Color(0.6, 0.37382948, 0.3342787, 1)
+
+[node name="Main Menu" type="Node2D" unique_id=1875284667]
+
+[node name="MenuPanel" type="Panel" parent="." unique_id=1492096448]
+offset_right = 1154.0
+offset_bottom = 644.0
+
+[node name="PlayButton" type="Button" parent="MenuPanel" unique_id=733596169]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -172.0
+offset_top = -343.0
+offset_right = 172.0
+offset_bottom = -263.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 80
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eurlx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3k8sp")
+text = "PLAY"
+script = ExtResource("1_5mbse")
+
+[node name="QuitButton" type="Button" parent="MenuPanel" unique_id=1965480451]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.5
+offset_top = -214.0
+offset_right = 125.5
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 80
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l6cm7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vue75")
+text = "QUIT"
+
+[connection signal="pressed" from="MenuPanel/PlayButton" to="MenuPanel/PlayButton" method="_on_play_button_pressed"]
+[connection signal="pressed" from="MenuPanel/QuitButton" to="MenuPanel/PlayButton" method="_on_quit_button_pressed"]

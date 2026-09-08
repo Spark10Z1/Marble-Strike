@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://gugrv2wprhmj"]
+
+[ext_resource type="Script" uid="uid://2i4badnm8yjl" path="res://scripts/game.gd" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://cmfb65xpi6l8g" path="res://scenes/marble.tscn" id="2_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://d0v5jq8ykq6se" path="res://assets/marbles/Circle.png" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dhdcoygf0esae" path="res://scenes/finger.tscn" id="4_lbhrr"]
+[ext_resource type="Script" uid="uid://qwf3ftheapkd" path="res://scripts/power_bar.gd" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://cvj8cfl6nxgw" path="res://scenes/hud.tscn" id="6_p57ef"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jlnog"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jlnog"]
+radius = 232.03448
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5sy4"]
+bg_color = Color(0.6, 0.6, 0.6, 0.36862746)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
+bg_color = Color(0.017387582, 0.6, 0, 1)
+
+[node name="Game" type="Node2D" unique_id=1443408706]
+material = SubResource("CanvasItemMaterial_jlnog")
+script = ExtResource("1_uwrxv")
+marble_scene = ExtResource("2_yqjtg")
+
+[node name="PlayArea" type="Area2D" parent="." unique_id=1956247392]
+position = Vector2(576, 324)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayArea" unique_id=2053817662]
+position = Vector2(0, -63)
+shape = SubResource("CircleShape2D_jlnog")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayArea" unique_id=604503390]
+position = Vector2(-12.000011, -53.00001)
+scale = Vector2(2.136582, 2.1855984)
+texture = ExtResource("3_lnu2h")
+
+[node name="Finger" parent="." unique_id=692574591 instance=ExtResource("4_lbhrr")]
+position = Vector2(576, 324)
+scale = Vector2(0.8804784, 0.8804784)
+
+[node name="PowerBar" type="ProgressBar" parent="." unique_id=1490769010]
+offset_right = 100.0
+offset_bottom = 30.0
+theme_override_styles/background = SubResource("StyleBoxFlat_u5sy4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_iywne")
+show_percentage = false
+script = ExtResource("5_iywne")
+
+[node name="Score Label" type="Label" parent="." unique_id=353708655]
+offset_left = 840.0
+offset_top = 10.0
+offset_right = 1122.0
+offset_bottom = 123.0
+theme_override_font_sizes/font_size = 40
+text = "Score: 0"
+
+[node name="Hud" parent="." unique_id=291320715 instance=ExtResource("6_p57ef")]
+visible = false
+
+[connection signal="shoot" from="Finger" to="." method="_on_finger_shoot"]

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dhdcoygf0esae"]
+
+[ext_resource type="Script" uid="uid://bhrlmd8jgh0gr" path="res://scripts/finger.gd" id="2_4cckd"]
+
+[node name="Finger" type="Sprite2D" unique_id=692574591]
+script = ExtResource("2_4cckd")
