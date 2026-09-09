@@ -16,7 +16,7 @@ var shooter_available : bool = true
 var marble_count : int
 var current_count : int
 var target
-var cpu_play : bool = true
+var player1_play : bool = true
 var shooter_out : bool = false
 var marble_out : bool = false
 var proceed_play : bool = true
@@ -43,25 +43,25 @@ func load_images():
 
 func new_game():
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-	global.player_score = 0
-	global.cpu_score = 0
+	global.player1_score = 0
+	global.player2_score = 0
 	generate_marbles()
 	reset_shooter()
 	show_finger()
 	show_score()
 
 func _process(_delta: float) -> void:
-	if cpu_play:
-		$"Current_Player Label".text = "CPU PLAYS!!"
+	if player1_play:
+		$"Current_Player Label".text = "PLAYER2 PLAYS!!"
 	else:
-		$"Current_Player Label".text = "PLAYER PLAYS!!"
+		$"Current_Player Label".text = "PLAYER1 PLAYS!!"
 	for m in get_tree().get_nodes_in_group("marble_scene"):
 		if(m.linear_velocity.length() > 0.0  and 
 		m.linear_velocity.length() < MOVE_THRESHOLD):
 			m.sleeping = true			
 		elif m.linear_velocity.length() >= MOVE_THRESHOLD:
 			shooter_available = false			
-	if current_count == 0 or abs(global.cpu_score - global.player_score) > current_count:
+	if current_count == 0 or abs(global.player2_score - global.player1_score) > current_count:
 		game_over()
 	if shooter.linear_velocity.length() > MOVE_THRESHOLD:
 		shooter_available = false
@@ -99,17 +99,20 @@ func reset_shooter():
 	shooter_available = true
 	change_player()
 	marble_out = false
-	if cpu_play:
-		bot_play()
-		hide_finger()
+	if player1_play:
+		if not global.two_player_mode:
+			bot_play()
+		else:
+			show_finger()
+			play_sound(Reset_Sound)
 	else:
 		if proceed_play:
 			show_finger()
 			play_sound(Reset_Sound)
 	
 	#Auto Difficulty Adjustment
-	if(abs(global.cpu_score - global.player_score) > 2):
-		if global.cpu_score > global.player_score:
+	if(abs(global.player2_score - global.player1_score) > 2):
+		if global.player2_score > global.player1_score:
 			global.diff_level -= 5
 		else:
 			global.diff_level += 5
@@ -141,16 +144,16 @@ func _on_finger_shoot(power) -> void:
 		hide_finger()
 
 func show_score():
-	$"Score Label".text = "Player Score: " + str(global.player_score)
-	$"Score Label".text +="\nCPU Score: " + str(global.cpu_score)
+	$"Score Label".text = "Player1 Score: " + str(global.player1_score)
+	$"Score Label".text +="\nPlayer2 Score: " + str(global.player2_score)
 	$"Score Label".text +="\nRemaining Marbles: " + str(current_count)	
 
 func update_score():
-	if cpu_play:
-		global.cpu_score += 1
+	if player1_play:
+		global.player2_score += 1
 		play_sound(CPU_Point_Sound)
 	else:
-		global.player_score += 1
+		global.player1_score += 1
 		play_sound(Player_Point_Sound)
 	current_count -= 1
 	show_score()
@@ -173,27 +176,30 @@ func bot_play():
 	else:
 		dir = target.position - START_POS
 		power = dir * MAX_POWER
+	if global.diff_level >= 50:
+		dir = target.position - START_POS
+		power = dir * MAX_POWER
 	if shooter_available and proceed_play:
 		shooter.apply_central_impulse(power)
 	shooter_available = false
 	
 func change_player():
 	if(not marble_out):
-		cpu_play = not cpu_play
+		player1_play = not player1_play
 	
 func game_over():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	hide_finger()
 	var game_over_sounds = [Win_Sound, Tie_Sound, Lose_Sound]
 	var result : int
-	if global.player_score > global.cpu_score:
-		$Hud/ResultPanel/Label.text = "YOU WIN!"
+	if global.player1_score > global.player2_score:
+		$Hud/ResultPanel/Label.text = "Player1 WINS!"
 		result = 0
-	elif global.player_score == global.cpu_score:
+	elif global.player1_score == global.player2_score:
 		$Hud/ResultPanel/Label.text = "TIE!"
 		result = 1
 	else:
-		$Hud/ResultPanel/Label.text = "YOU LOSE!"
+		$Hud/ResultPanel/Label.text = "Player2 WINS!"
 		result = 2
 	if proceed_play:
 		play_sound(game_over_sounds[result])

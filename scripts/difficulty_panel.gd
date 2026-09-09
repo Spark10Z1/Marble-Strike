@@ -27,9 +27,8 @@ func _on_back_button_pressed() -> void:
 
 
 func _on_player_button_pressed() -> void:
-	$Debug.text = "NOT IMPLEMENTED YET!!!"
-	await get_tree().create_timer(0.5).timeout
-	$Debug.text = ""
+	global.two_player_mode = true
+	next_screen()
 
 func _on_how_to_play_button_pressed() -> void:
 	$Debug.text = "NOT IMPLEMENTED YET!!!"
