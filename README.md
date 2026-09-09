@@ -1,5 +1,16 @@
 # Marble Strike - The Marble Game
-- Difficulty Selection for Starting Difficulty
-- Hit marbles out of boundary to score points
-- Switch player if no score is obtained after hitting striker marble
-- Player vs Bot with Automatic Difficulty Adjustment based on Player Performance
+## MODES
+- CPU BOT Starting Difficulty can be selected in the Difficulty Section
+- Difficulty Automatically Adjusted based on Player Performance
+- 2 Player Mode as an alternative to CPU BOT
+
+## HOW TO PLAY
+- Use Mouse to AIM Striker Marble
+- HOLD Left Mouse Button to INCREASE POWER
+- Use Power Meter to Gauge Power Applied
+- Hit Marbles outside the boundary to secure points
+- Player Switch if no point is secured by a player after Striker Marble comes to a stop
+
+## How To Install
+- Download the latest executable file(.exe)
+- Open and Play
