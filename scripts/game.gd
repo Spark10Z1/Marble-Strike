@@ -13,7 +13,7 @@ const AREA_POS := Vector2(576, 346)
 
 var shooter_available : bool = true
 
-var marble_count : int
+#var global.marble_count : int
 var current_count : int
 var target
 var player1_play : bool = true
@@ -33,6 +33,8 @@ func _ready() -> void:
 	load_images()
 	new_game()
 	$PlayArea.body_exited.connect(marble_obtained)
+	$Player1_Status.add_theme_color_override("font_color", Color.RED)
+	$Player2_Status.add_theme_color_override("font_color", Color.GREEN)
 
 func load_images():
 	for i in range(1, 18, 1):
@@ -52,9 +54,11 @@ func new_game():
 
 func _process(_delta: float) -> void:
 	if player1_play:
-		$"Current_Player Label".text = "PLAYER2 PLAYS!!"
+		$Player1_Status.add_theme_color_override("font_color", Color.RED)
+		$Player2_Status.add_theme_color_override("font_color", Color.GREEN)
 	else:
-		$"Current_Player Label".text = "PLAYER1 PLAYS!!"
+		$Player1_Status.add_theme_color_override("font_color", Color.GREEN)
+		$Player2_Status.add_theme_color_override("font_color", Color.RED)
 	for m in get_tree().get_nodes_in_group("marble_scene"):
 		if(m.linear_velocity.length() > 0.0  and 
 		m.linear_velocity.length() < MOVE_THRESHOLD):
@@ -68,11 +72,10 @@ func _process(_delta: float) -> void:
 	if(shooter.position!= START_POS and shooter.linear_velocity.length() <= MOVE_THRESHOLD/2):
 		shooter.queue_free()
 		reset_shooter()
-	
 func generate_marbles():
-	marble_count = randi_range(25, 35)
-	current_count = marble_count
-	for count in range(marble_count):
+	global.marble_count = randi_range(25, 35)
+	current_count = global.marble_count
+	for count in range(global.marble_count):
 		var marble_instance = marble_scene.instantiate()
 		var default_pos = AREA_POS
 		var x_pos_change = randi_range(-160, 160)
@@ -85,7 +88,7 @@ func generate_marbles():
 
 func play_sound(sound):
 	audio_player.stream = sound
-	audio_player.play()		
+	audio_player.play()
 
 func reset_shooter():
 	shooter = marble_scene.instantiate()
@@ -144,9 +147,7 @@ func _on_finger_shoot(power) -> void:
 		hide_finger()
 
 func show_score():
-	$"Score Label".text = "Player1 Score: " + str(global.player1_score)
-	$"Score Label".text +="\nPlayer2 Score: " + str(global.player2_score)
-	$"Score Label".text +="\nRemaining Marbles: " + str(current_count)	
+	$"Score Label".text ="Remaining Marbles: " + str(current_count)	
 
 func update_score():
 	if player1_play:
@@ -205,3 +206,9 @@ func game_over():
 		play_sound(game_over_sounds[result])
 	$Hud.show()
 	proceed_play = false
+
+
+
+func _on_back_button_pressed() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	get_tree().change_scene_to_file("res://scenes/difficulty.tscn")

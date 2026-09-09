@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://hujepmo3u0l"
-path="res://.godot/imported/Curosor1.wav-c1046148e1d0d460393ede1eba165f90.sample"
+path="res://.godot/imported/Cursor1.wav-1e282a2111f8fed9e2295bc7c4b5230e.sample"
 
 [deps]
 
-source_file="res://assets/sfx/Curosor1.wav"
-dest_files=["res://.godot/imported/Curosor1.wav-c1046148e1d0d460393ede1eba165f90.sample"]
+source_file="res://assets/sfx/Cursor1.wav"
+dest_files=["res://.godot/imported/Cursor1.wav-1e282a2111f8fed9e2295bc7c4b5230e.sample"]
 
 [params]
 

@@ -7,6 +7,9 @@
 [ext_resource type="Script" uid="uid://qwf3ftheapkd" path="res://scripts/power_bar.gd" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://cvj8cfl6nxgw" path="res://scenes/hud.tscn" id="6_p57ef"]
 [ext_resource type="Texture2D" uid="uid://c6nwcw0reefjb" path="res://assets/BG.jpeg" id="6_u5sy4"]
+[ext_resource type="Script" uid="uid://dckaibm8kfkvb" path="res://scripts/player_2_progress.gd" id="7_0tnpc"]
+[ext_resource type="Script" uid="uid://ddm14p5gbvfpo" path="res://scripts/player_1_progress.gd" id="8_gee14"]
+[ext_resource type="FontFile" uid="uid://dbdu1lcgtf6kk" path="res://assets/fonts/BoldPixels.otf" id="10_vtaks"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jlnog"]
 
@@ -28,10 +31,43 @@ metadata/_snap_count = 100
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p57ef"]
 texture = SubResource("GradientTexture2D_u5sy4")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtaks"]
+bg_color = Color(0.6, 0.6, 0.6, 0.58431375)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tnpc"]
+bg_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dinhu"]
+bg_color = Color(0.6, 0.6, 0.6, 0.58431375)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvpfn"]
+bg_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xu2wo"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebcsn"]
+bg_color = Color(0, 0.0850648, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgbgp"]
+bg_color = Color(0.3253269, 0.366089, 0.6, 1)
+
 [node name="Game" type="Node2D" unique_id=1443408706]
 material = SubResource("CanvasItemMaterial_jlnog")
 script = ExtResource("1_uwrxv")
 marble_scene = ExtResource("2_yqjtg")
+metadata/_edit_vertical_guides_ = [577.0]
+metadata/_edit_horizontal_guides_ = [82.0]
 
 [node name="Border" type="Area2D" parent="." unique_id=867786608]
 light_mask = 15
@@ -64,7 +100,7 @@ metadata/_edit_lock_ = true
 
 [node name="Finger" parent="." unique_id=692574591 instance=ExtResource("4_lbhrr")]
 z_index = 2
-position = Vector2(138, 62.000046)
+position = Vector2(220, 587.99994)
 scale = Vector2(0.23087287, -0.85629904)
 flip_h = true
 
@@ -78,25 +114,61 @@ theme_override_styles/fill = SubResource("StyleBoxTexture_p57ef")
 show_percentage = false
 script = ExtResource("5_iywne")
 
-[node name="Sprite2D" type="Sprite2D" parent="PowerBar" unique_id=648957027]
+[node name="Player1_Progress" type="ProgressBar" parent="." unique_id=88186372]
+offset_left = 246.0
+offset_top = 28.0
+offset_right = 520.5454
+offset_bottom = 58.0
+theme_override_styles/background = SubResource("StyleBoxFlat_vtaks")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0tnpc")
+show_percentage = false
+script = ExtResource("8_gee14")
+
+[node name="Player2_Progress" type="ProgressBar" parent="." unique_id=192029178]
+offset_left = 633.0
+offset_top = 28.0
+offset_right = 907.5454
+offset_bottom = 58.0
+theme_override_constants/outline_size = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_dinhu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kvpfn")
+fill_mode = 1
+show_percentage = false
+script = ExtResource("7_0tnpc")
 
 [node name="Score Label" type="Label" parent="." unique_id=353708655]
-offset_left = 840.0
-offset_top = 10.0
-offset_right = 1122.0
-offset_bottom = 123.0
+z_index = 4
+offset_left = 872.0
+offset_top = 86.0
+offset_right = 1154.0
+offset_bottom = 199.0
+theme_override_fonts/font = ExtResource("10_vtaks")
 theme_override_font_sizes/font_size = 24
-text = "Player Score: 0
-CPU Score: 0
-Remaining Marbles: 15"
-horizontal_alignment = 2
+text = "Remaining Marbles: 15"
+horizontal_alignment = 1
 
-[node name="Current_Player Label" type="Label" parent="." unique_id=771493634]
-offset_left = 153.0
-offset_top = 71.0
-offset_right = 246.0
-offset_bottom = 94.0
-text = "CPU PLAYS!!"
+[node name="Player1_Status" type="Label" parent="." unique_id=771493634]
+z_index = 4
+offset_left = 342.0
+offset_top = 60.0
+offset_right = 435.0
+offset_bottom = 83.0
+theme_override_fonts/font = ExtResource("10_vtaks")
+text = "Player 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Player2_Status" type="Label" parent="." unique_id=421295158]
+z_index = 4
+offset_left = 751.0
+offset_top = 60.0
+offset_right = 844.0
+offset_bottom = 83.0
+theme_override_fonts/font = ExtResource("10_vtaks")
+text = "Player  2"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Hud" parent="." unique_id=291320715 instance=ExtResource("6_p57ef")]
 visible = false
@@ -109,4 +181,28 @@ position = Vector2(556, 233.00003)
 rotation = -1.5707964
 texture = ExtResource("6_u5sy4")
 
+[node name="BackButton" type="Button" parent="." unique_id=1389224267]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 1042.0
+offset_top = 570.0
+offset_right = 1114.0
+offset_bottom = 598.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("10_vtaks")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_xu2wo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ebcsn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rgbgp")
+text = "BACK"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1666371659]
+position = Vector2(99.125, 50.78809)
+scale = Vector2(28.249998, 55.423813)
+
 [connection signal="shoot" from="Finger" to="." method="_on_finger_shoot"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://b40lndu5gpwks"]
 
-[ext_resource type="Script" uid="uid://m52fd0kry5rp" path="res://scripts/play_button.gd" id="1_5mbse"]
 [ext_resource type="Script" uid="uid://duqw7thdhr4cc" path="res://scripts/mainmenu.gd" id="1_r3g3c"]
 [ext_resource type="Texture2D" uid="uid://c6nwcw0reefjb" path="res://assets/BG.jpeg" id="2_h73c4"]
 [ext_resource type="FontFile" uid="uid://dqy86j6edqtnj" path="res://assets/fonts/boldpixels.ttf" id="2_wf3n4"]
@@ -127,9 +126,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_uui5l")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_eurlx")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3k8sp")
 text = "PLAY GAME"
-script = ExtResource("1_5mbse")
 
-[node name="Button" type="Button" parent="." unique_id=764809297]
+[node name="CustomizeButton" type="Button" parent="." unique_id=764809297]
 offset_left = 369.0
 offset_top = 413.0
 offset_right = 782.0
@@ -287,5 +285,11 @@ scale = Vector2(0.99658114, 0.43402544)
 texture = ExtResource("2_h73c4")
 metadata/_edit_lock_ = true
 
-[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_play_button_pressed"]
-[connection signal="pressed" from="QuitButton" to="PlayButton" method="_on_quit_button_pressed"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=601917385]
+
+[connection signal="mouse_entered" from="PlayButton" to="." method="_on_play_button_mouse_entered"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="CustomizeButton" to="." method="_on_customize_button_mouse_entered"]
+[connection signal="pressed" from="CustomizeButton" to="." method="_on_customize_button_pressed"]
+[connection signal="mouse_entered" from="QuitButton" to="." method="_on_quit_button_mouse_entered"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
