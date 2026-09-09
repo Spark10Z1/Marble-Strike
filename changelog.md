@@ -3,13 +3,13 @@
 - Dummy Buttons for Difficulty selection
 - Hit marbles outside boundary to get points
 - Game finishes when all marbles are hit outside the boundary
-## Bugs
+### Bugs
 - Striker does not reset properly
 
 # v2.0
 - Added BOT player
 - Implemented Starting Difficulty Selection
-## Bugs
+### Bugs
 - Scores not getting updated properly
 
 # v2.1
